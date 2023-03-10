@@ -12,7 +12,5 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.11.2
-      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mike
+      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin 
       - run: mkdocs gh-deploy --force
-      #- run: mike deploy 0.0.1
-      #- run: mike set-default 0.0.1
