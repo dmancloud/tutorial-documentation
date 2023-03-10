@@ -13,6 +13,6 @@ jobs:
         with:
           python-version: 3.11.2
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mike
-      #- run: mkdocs gh-deploy --force
-      - run: mike deploy 0.0.1
-      - run: mike set-default 0.0.1
+      - run: mkdocs gh-deploy --force
+      #- run: mike deploy 0.0.1
+      #- run: mike set-default 0.0.1
