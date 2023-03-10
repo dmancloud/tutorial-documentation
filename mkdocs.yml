@@ -1,6 +1,28 @@
 site_name: Dinesh Mistry Tutorials
 theme:
   name: material
+  palette:
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  
   features:
     - navigation.tabs
     - navigation.sections
@@ -21,6 +43,8 @@ extra:
       link: https://twitter.com/dineshmistry
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/@dineshmistry
+  generator: false
+
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -41,4 +65,3 @@ markdown_extensions:
 
 copyright: |
   &copy; 2023 Dinesh Mistry</a>
-  
