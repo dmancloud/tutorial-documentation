@@ -14,11 +14,11 @@ theme:
     text: Poppins      
   custom_dir: overrides
   features:
-  - navigation.sections
-  - navigation.expand
+  #- navigation.sections
+  #- navigation.expand
   #- navigation.top
-  - navigation.path
-  - navigation.prune
+  #- navigation.path
+  #- navigation.prune
   - navigation.footer
   - navigation.instant
   - navigation.tracking
