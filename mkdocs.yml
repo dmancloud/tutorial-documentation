@@ -16,7 +16,7 @@ theme:
   features:
   - navigation.sections
   - navigation.expand
-  - navigation.top
+  #- navigation.top
   - navigation.path
   - navigation.prune
   - navigation.footer
