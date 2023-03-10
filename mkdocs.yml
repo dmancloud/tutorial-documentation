@@ -1,4 +1,4 @@
-site_name: Tutorials
+site_name: Dinesh Mistry - Tutorials
 site_author: Dinesh Mistry
 
 # Configuration
@@ -14,11 +14,11 @@ theme:
     text: Poppins      
   custom_dir: overrides
   features:
-  #- navigation.sections
-  #- navigation.expand
+  - navigation.sections
+  - navigation.expand
   #- navigation.top
-  #- navigation.path
-  #- navigation.prune
+  - navigation.path
+  - navigation.prune
   - navigation.footer
   - navigation.instant
   - navigation.tracking
@@ -28,7 +28,8 @@ theme:
 
 # Repository
 repo_name: Github
-repo_url: https://github.com/dmancloud 
+repo_url: https://github.com/dmancloud
+edit_uri: edit/main/docs/
 
 extra:
   generator: false
@@ -73,6 +74,9 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js #?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
 
 copyright: |
   &copy; 2023 <a href="https://github.com/dmancloud"  target="_blank" rel="noopener">Dinesh Mistry</a>

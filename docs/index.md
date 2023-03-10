@@ -1,17 +1,10 @@
 # About
+My mission is to help you learn and master the art of DevOps, one video at a time. DevOps is a rapidly evolving field that combines software development and IT operations to accelerate the delivery of high-quality software products. It emphasizes collaboration, automation, and continuous improvement to deliver value to customers faster and more reliably. 
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+My channel is dedicated to providing you with the latest DevOps knowledge, best practices, and insights to help you achieve your goals.
 
-## Commands
+I believe in making DevOps accessible and easy to understand, so we explain complex concepts in simple terms and provide step-by-step instructions to guide you through practical examples. My goal is to empower you with the knowledge and skills you need to build better software and advance your career.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Subscribe to the YouTube channel today to stay informed and engaged with the DevOps community, and join us on this exciting journey of learning and growth!
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+-Dinesh
