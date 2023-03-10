@@ -14,8 +14,6 @@ theme:
     text: Poppins      
   custom_dir: overrides
   features:
-  - navigation.tabs
-  - navigation.tabs.sticky
   - navigation.sections
   - navigation.expand
   - navigation.top
@@ -24,7 +22,6 @@ theme:
   - navigation.footer
   - navigation.instant
   - navigation.tracking
-  #- navigation.top
   - content.code.copy
   - content.code.annotate
   language: en  
