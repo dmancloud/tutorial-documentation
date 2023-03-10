@@ -1,0 +1,81 @@
+site_name: Tutorials
+site_author: Dinesh Mistry
+
+# Configuration
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    scheme: slate
+    #primary: light blue
+    #accent: yellow
+  font:
+    text: Poppins      
+  custom_dir: overrides
+  features:
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.sections
+  - navigation.expand
+  - navigation.top
+  - navigation.path
+  - navigation.prune
+  - navigation.footer
+  - navigation.instant
+  - navigation.tracking
+  #- navigation.top
+  - content.code.copy
+  - content.code.annotate
+  language: en  
+
+# Repository
+repo_name: Github
+repo_url: https://github.com/dmancloud 
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/dmancloud/
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/@dineshmistry
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/dineshmistry
+    #- icon: fontawesome/brands/linkedin
+    #  link: https://linkedin.com/in/c17hawke
+    #- icon: fontawesome/brands/instagram
+    #  link: https://www.instagram.com/c17hawke/  
+
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js #?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+
+copyright: |
+  &copy; 2023 <a href="https://github.com/dmancloud"  target="_blank" rel="noopener">Dinesh Mistry</a>
