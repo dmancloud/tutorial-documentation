@@ -44,6 +44,8 @@ extra:
     #  link: https://linkedin.com/in/c17hawke
     #- icon: fontawesome/brands/instagram
     #  link: https://www.instagram.com/c17hawke/  
+  version:
+    provider: mike
 
   consent:
     title: Cookie consent
