@@ -1,65 +1,123 @@
 site_name: Dinesh Mistry Tutorials
+site_author: Dinesh Mistry
+site_description: >-
+  Making DevOps accessible and easy to understand
+
+# Repository
+repo_name: dmancloud/tutorial-documentation
+repo_url: https://github.com/dmancloud/tutorial-documentation
+
 theme:
   name: material
   font:
-    text: Poppins
-  palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      scheme: default 
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
+    text: Roboto
+    code: Roboto Mono
 
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+
+  # Plugins
+  plugins:
+    - search:
+        separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+    - minify:
+        minify_html: true
+
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference
+        name: Switch to light mode
   
   features:
-    - navigation.tabs
+    - content.tooltips
     - navigation.sections
-    - toc.integrate
+    - navigation.tabs
     - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - navigation.tracking  
+    - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.tabs.link
-    - content.code.annotation
+    - content.code.annotate
     - content.code.copy
+
+  
   language: en
 
 extra:
+  annotate:
+    json: [.s2]
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/dmancloud
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/dineshmistry
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/u/dmancloud      
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/@dineshmistry
   generator: false
 
-
+# Extensions
 markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - abbr
   - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
   - pymdownx.arithmatex:
       generic: true
-  - footnotes
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
   - pymdownx.mark
-  - attr_list
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde  
 
 copyright: |
-  &copy; 2023 Dinesh Mistry</a>
+  Copyright &copy; 2023 Dinesh Mistry</a>
+
+nav:
+  - Home: index.md
+  - Tutorials:
+    - Install Sonarqube: install-sonarqube.md
+    - Install Jenkins: install-jenkins.md

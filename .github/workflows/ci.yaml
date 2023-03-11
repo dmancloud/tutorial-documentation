@@ -4,13 +4,21 @@ on:
     branches:
       - master
       - main
+
+permissions:
+  contents: write      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.11.2
+      - uses: actions/cache@v2
+        with:
+          key: ${{ github.ref }}
+          path: .cache
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin 
       - run: mkdocs gh-deploy --force
