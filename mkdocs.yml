@@ -1,8 +1,9 @@
 site_name: Dinesh Mistry Tutorials
 theme:
   name: material
+  font:
+    text: Poppins
   palette:
-
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
