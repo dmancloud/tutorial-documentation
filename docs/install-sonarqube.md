@@ -4,25 +4,20 @@ SonarQube is an open-source platform developed by SonarSource for continuous ins
 ## Prerequsites 
 - Virtual Machine running Ubuntu 22.04 or newer
 ### Update Package Repository and Upgrade Packages
-``` shell
+
+``` shell title="Run from shell prompt" linenums="1"
 sudo apt update
 sudo apt upgrade
 ```
 ## PostgreSQL
 ### Add PostgresSQL repository
-``` shell
+``` shell title="Run from shell prompt" linenums="1"
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-```
-``` shell
 wget -qO- https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo tee /etc/apt/trusted.gpg.d/pgdg.asc &>/dev/null
 ```
 ### Install PostgreSQL
-``` shell
+``` shell title="Run from shell prompt" linenums="1"
 sudo apt update
-```
-``` shell
 sudo apt-get -y install postgresql postgresql-contrib
-```
-``` shell
 sudo systemctl enable postgresql
 ```

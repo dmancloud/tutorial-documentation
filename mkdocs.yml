@@ -55,10 +55,12 @@ theme:
     - content.code.annotate
     - content.code.copy
 
-  
   language: en
 
 extra:
+  version:
+    provider: mike
+    default: latest
   annotate:
     json: [.s2]
   social:
