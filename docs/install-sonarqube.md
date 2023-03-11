@@ -1,5 +1,4 @@
 # How to Install Sonarqube in Ubuntu Linux
-
 SonarQube is an open-source platform developed by SonarSource for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs and code smells on 29 programming languages.
 ## Prerequsites 
 - Virtual Machine running Ubuntu 22.04 or newer
