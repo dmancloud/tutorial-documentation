@@ -4,7 +4,7 @@ site_description: >-
   Making DevOps accessible and easy to understand
 
 # Repository
-repo_name: dmancloud/tutorial-documentation
+repo_name: tutorial-documentation
 repo_url: https://github.com/dmancloud/tutorial-documentation
 
 theme:
@@ -23,6 +23,7 @@ theme:
         separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
     - minify:
         minify_html: true
+    - mkdocs-video    
 
   palette:
     - scheme: default
