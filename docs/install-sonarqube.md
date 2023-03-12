@@ -78,3 +78,69 @@ vm.max_map_count = 262144
 ``` shell title="Run from shell prompt" linenums="1"
 sudo reboot
 ```
+## Sonarqube
+### Download and Extract
+``` shell title="Run from shell prompt" linenums="1"
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.0.65466.zip
+sudo apt install unzip
+sudo unzip sonarqube-9.9.0.65466.zip -d /opt
+sudo mv /opt/sonarqube-9.9.0.65466 /opt/sonarqube
+```
+### Create user and set permissions
+``` shell title="Run from shell prompt" linenums="1"
+sudo groupadd sonar
+sudo useradd -c "user to run SonarQube" -d /opt/sonarqube -g sonar sonar
+sudo chown sonar:sonar /opt/sonarqube -R
+```
+### Update Sonarqube properties with DB credentials
+``` shell title="Run from shell prompt" linenums="1"
+sudo vim /opt/sonarqube/conf/sonar.properties
+```
+Find and replace the below values, you might need to add the sonar.jdbc.url
+``` shell title="Run from shell prompt" linenums="1"
+sonar.jdbc.username=sonar
+sonar.jdbc.password=sonar
+sonar.jdbc.url=jdbc:postgresql://localhost:5432/sonarqube
+```
+Create service for Sonarqube
+``` shell title="Run from shell prompt" linenums="1"
+sudo vim /etc/systemd/system/sonar.service
+```
+Paste the below into the file
+``` shell title="Paste the below contents" linenums="1"
+[Unit]
+Description=SonarQube service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
+ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+
+User=sonar
+Group=sonar
+Restart=always
+
+LimitNOFILE=65536
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target
+```
+Start Sonarqube and Enable service
+``` shell title="Paste the below contents" linenums="1"
+sudo systemctl start sonar
+sudo systemctl enable sonar
+sudo systemctl status sonar
+```
+Watch log files and monitor for startup
+``` shell title="Watch logs" linenums="1"
+sudo tail -f /opt/sonarqube/logs/sonar.log
+```
+Access the Sonarqube UI
+``` shell title="Paste the below contents" linenums="1"
+http://<IP>:9000
+```
+
+That's it! You have now successfully installed Sonarque, if you found this tutotial helpful please consider subscribing to my YouTube Channel for more tutorials like this. https://www.youtube.com/@dineshmistry
