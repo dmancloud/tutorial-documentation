@@ -21,10 +21,4 @@ jobs:
           key: ${{ github.ref }}
           path: .cache
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mike
-      - run: |
-          git config --global user.name dmancloud
-          git config --global user.email dinesh@dman.cloud
-      - run: mike deploy --push 0.0.1
-      - run: mike deploy --update-aliases 0.0.1 latest
-      - run: mike set-default latest
-      #- run: mkdocs gh-deploy --force
+      - run: mkdocs gh-deploy --force
