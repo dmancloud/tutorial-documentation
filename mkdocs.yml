@@ -123,5 +123,5 @@ nav:
   - Home: index.md
   - Tutorials:
     - Install Gitlab CE k8s: install-gitlab-ce-k8s.md
-    #- Install Sonarqube: install-sonarqube.md
+    - Install Sonarqube: install-sonarqube.md
     #- Install Jenkins: install-jenkins.md
