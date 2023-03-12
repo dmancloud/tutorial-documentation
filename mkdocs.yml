@@ -123,6 +123,7 @@ nav:
   - Home: index.md
   - Tutorials:
     - Install ArgoCD: install-argocd.md
+    - Install HA Kubernetes with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
     - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
     - Install Sonarqube: install-sonarqube.md
     - Install Gitlab CE k8s: install-gitlab-ce-k8s.md
