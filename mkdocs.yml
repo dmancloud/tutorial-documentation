@@ -24,6 +24,8 @@ theme:
     - minify:
         minify_html: true
     - mkdocs-video    
+    - git-revision-date-localized:
+        enable_creation_date: true      
 
   palette:
     - scheme: default
@@ -73,6 +75,13 @@ extra:
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/@dineshmistry
   generator: false
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.  
 
 # Extensions
 markdown_extensions:
