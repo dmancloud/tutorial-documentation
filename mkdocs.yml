@@ -136,4 +136,4 @@ nav:
     - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
     - Install Sonarqube: install-sonarqube.md
     - Install Gitlab CE k8s: install-gitlab-ce-k8s.md
-    #- Install Jenkins: install-jenkins.md
+    - Kubernetes Secrets: kubernetes-secrets.md
