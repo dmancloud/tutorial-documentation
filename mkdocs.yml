@@ -131,6 +131,7 @@ copyright: |
 nav:
   - Home: index.md
   - Tutorials:
+    - Install Jenkins: install-jenkins.md
     - Install ArgoCD: install-argocd.md
     - Install HA Kubernetes with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
     - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
