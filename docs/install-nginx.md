@@ -1,4 +1,4 @@
-# Install Nginx
+# Install Nginx Reverse Proxy for Jenkins
 Nginx is one of the most popular web servers in the world and is responsible for hosting some of the largest and highest-traffic sites on the internet. It is a lightweight choice that can be used as either a web server or reverse proxy.
 
 In this tutorial, you will configure Nginx as a reverse proxy to direct client requests to Jenkins.
@@ -40,35 +40,6 @@ Check you Web Server is running
 ``` shell title="Access your web server by visiting"
 http://your_server_ip
 ```
-### Setting Up Server Blocks (Recommended)
-Create the directory for your_domain as follows, using the -p flag to create any necessary parent directories:
-``` shell title="Run from shell prompt (replace your domain)" linenums="1"
-sudo mkdir -p /var/www/jenkins.dev.dman.cloud/html
-```
-Next, assign ownership of the directory with the $USER environment variable:
-``` shell title="Run from shell prompt (replace your domain)" linenums="1"
-sudo chown -R $USER:$USER /var/www/jenkins.dev.dman.cloud/html
-```
-To ensure that your permissions are correct and allow the owner to read, write, and execute the files while granting only read and execute permissions to groups and others, you can input the following command:
-``` shell title="Run from shell prompt (replace your domain)" linenums="1"
-sudo chmod -R 755 /var/www/jenkins.dev.dman.cloud
-```
-Next, create a sample index.html page using `vi` or your favorite editor:
-``` shell title="Run from shell prompt (replace your domain)" linenums="1"
-sudo vi /var/www/jenkins.dev.dman.cloud/html/index.html
-```
-Inside, add the following sample HTML:
-``` html title="Replace your domain" linenums="1"
-<html>
-    <head>
-        <title>Welcome to jenkins.dev.dman.cloud!</title>
-    </head>
-    <body>
-        <h1>Success!  The jenkins.dev.dman.cloud server block is working!</h1>
-    </body>
-</html>
-```
-Save and close the file
 
 In order for Nginx to serve this content, it’s necessary to create a server block with the correct directives.
 ``` shell title="Run from shell prompt (replace your domain)" linenums="1"
@@ -76,18 +47,31 @@ sudo vi /etc/nginx/sites-available/jenkins.dev.dman.cloud
 ```
 Paste in the following configuration block, which is similar to the default, but updated for our new directory and domain name:
 ``` shell title="Paste the below (replace your domain)" linenums="1"
-server {
-        listen 80;
-        listen [::]:80;
+upstream jenkins{
+    server 127.0.0.1:8080;
+}
 
-        root /var/www/jenkins.dev.dman.cloud/html;
-        index index.html index.htm index.nginx-debian.html;
+server{
+    listen      80;
+    server_name jenkins.dev.dman.cloud;
 
-        server_name jenkins.dev.dman.cloud;
+    access_log  /var/log/nginx/jenkins.access.log;
+    error_log   /var/log/nginx/jenkins.error.log;
 
-        location / {
-                try_files $uri $uri/ =404;
-        }
+    proxy_buffers 16 64k;
+    proxy_buffer_size 128k;
+
+    location / {
+        proxy_pass  http://jenkins;
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+        proxy_redirect off;
+
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Forwarded-Proto https;
+    }
+
 }
 ```
 Next, let’s enable the file by creating a link from it to the sites-enabled directory, which Nginx reads from during startup:
@@ -102,4 +86,4 @@ If there aren’t any problems, restart Nginx to enable your changes:
 ``` shell title="Run from shell prompt" linenums="1"
 sudo systemctl restart nginx
 ```
-Nginx should now be serving your domain name. You can test this by navigating to http://your_domain
+Nginx should now be serving Jenkins from your domain name. You can test this by navigating to http://your_domain

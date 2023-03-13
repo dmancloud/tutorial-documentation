@@ -54,3 +54,5 @@ To test the renewal process, you can do a dry run with `certbot`:
 sudo certbot renew --dry-run
 ```
 If you see no errors, you’re all set. When necessary, Certbot will renew your certificates and reload Nginx to pick up the changes. If the automated renewal process ever fails, Let’s Encrypt will send a message to the email you specified, warning you when your certificate is about to expire.
+
+Nginx should now be serving your domain name. You can test this by navigating to https://your_domain

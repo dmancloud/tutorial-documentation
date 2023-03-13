@@ -132,8 +132,8 @@ nav:
   - Home: index.md
   - Tutorials:
     - Install Jenkins: install-jenkins.md
+    - Install Nginx Reverse Proxy for Jenkins: install-nginx.md
     - Configure Jenkins with SSL: jenkins-ssl.md 
-    - Install Nginx: install-nginx.md
     - Install ArgoCD: install-argocd.md
     - Install HA Kubernetes with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
     - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
