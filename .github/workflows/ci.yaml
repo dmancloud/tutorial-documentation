@@ -34,4 +34,5 @@ jobs:
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch    
       
-      - run: mkdocs gh-deploy --force
+      #- run: mkdocs gh-deploy --force
+      - run: mike deploy --push ${{ steps.extract_branch.outputs.branch }}
