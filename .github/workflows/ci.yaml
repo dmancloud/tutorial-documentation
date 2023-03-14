@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
-          
+
       - uses: actions/setup-python@v4
         with:
           python-version: 3.11.2
@@ -28,4 +28,10 @@ jobs:
       - run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+      
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch    
+      
       - run: mkdocs gh-deploy --force
