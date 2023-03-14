@@ -35,4 +35,4 @@ jobs:
         id: extract_branch    
       
       #- run: mkdocs gh-deploy --force
-      - run: mike deploy ${{ steps.extract_branch.outputs.branch }}
+      - run: mike deploy  --push --update-aliases ${{ steps.extract_branch.outputs.branch }}
