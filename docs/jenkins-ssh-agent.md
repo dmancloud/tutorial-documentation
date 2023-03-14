@@ -14,7 +14,7 @@ sudo adduser jenkins
 ```
 Grant Sudo Rights to Jenkins User
 ``` shell title="Run from shell prompt" linenums="1"
-usermod -aG sudo jenkins
+sudo usermod -aG sudo jenkins
 ```
 Logout and ssh back as user Jenkins
 ## Adoptium Java 11
