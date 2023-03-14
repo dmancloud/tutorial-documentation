@@ -141,3 +141,4 @@ nav:
     - Install Sonarqube: install-sonarqube.md
     - Install Gitlab CE k8s: install-gitlab-ce-k8s.md
     - Kubernetes Secrets: kubernetes-secrets.md
+    - Install Nexus3 Repository Manager with TLS: nexus3-with-tls.md
