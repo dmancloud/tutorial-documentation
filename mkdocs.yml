@@ -136,6 +136,7 @@ nav:
     - Configure Jenkins with SSL: jenkins-ssl.md 
     - Adding an SSH Based Agent with Docker to Jenkins: jenkins-ssh-agent.md
     - Install ArgoCD: install-argocd.md
+    - ArgoCD Git Webhook: argocd-webhook.md
     - Install HA Kubernetes with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
     - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
     - Install Sonarqube: install-sonarqube.md
