@@ -67,3 +67,15 @@ Output
 To set up your installation, visit Jenkins on its default port, 8080, using your server domain name or IP address: http://your_server_ip_or_domain:8080
 
 You should receive the Unlock Jenkins screen, which displays the location of the initial password:
+``` groovy title="Sample Jenkinsfile" linenums="1"
+pipeline {
+    agent any
+    stages {
+        stage('Hello World') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+```
