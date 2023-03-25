@@ -1,4 +1,4 @@
-# Install Giblab CE on Kubernetes
+# Install Gitlab CE on Kubernetes
 
 Are you looking to streamline your CI/CD pipeline and improve collaboration across your development teams? Deploying GitLab on Kubernetes can help you achieve these goals and more. In this step-by-step tutorial, I will walk you through everything you need to know to get started with GitLab on Kubernetes.
 
