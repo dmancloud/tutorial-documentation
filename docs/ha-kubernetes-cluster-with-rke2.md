@@ -31,9 +31,9 @@ vi /etc/rancher/rke2/config.yaml
 ``` shell title="Paste the below contents" linenums="1"
 tls-san:
 - k8s-master01
-- k8s-master01.dman.cloud
-- k8s-cluster.dman.cloud
-- 192.168.3.83
+- k8s-master01.dev.dman.cloud
+- k8s-cluster.dev.dman.cloud
+- 192.168.1.20
 disable: rke2-ingress-nginx
 cni:
 - calico
@@ -41,7 +41,7 @@ cni:
 
 ## Install RKE2 on k8s-master01 node
 ``` shell title="Export variables we will use to configure kube-vip" linenums="1"
-export VIP=192.168.3.83
+export VIP=192.168.1.20
 export TAG=v0.5.5
 export INTERFACE=ens192
 export CONTAINER_RUNTIME_ENDPOINT=unix:///run/k3s/containerd/containerd.sock
@@ -84,7 +84,7 @@ kubectl logs --tail 100 -n kube-system <pod_from_above> | | grep -i broad
 ```
 ### Check VIP Status
 ``` shell title="Run from shell prompt" linenums="1"
-ping 192.168.3.83
+ping 192.168.1.20
 ```
 ## Prepare configuration file for k8s-master02 node
 ### ssh into the second master node
@@ -96,18 +96,18 @@ vi /etc/rancher/rke2/config.yaml
 ```
 ``` shell title="Paste the below values (change TOKEN)" linenums="1"
 token: <PASTE TOKEN HERE>
-server: https://k8s-cluster.dman.cloud:9345
+server: https://k8s-cluster.dev.dman.cloud:9345
 tls-san:
 - k8s-master02
-- k8s-master02.dman.cloud
-- k8s-cluster.dman.cloud
-- 192.168.3.83
+- k8s-master02.dev.dman.cloud
+- k8s-cluster.dev.dman.cloud
+- 192.168.1.20
 disable: rke2-ingress-nginx
 cni:
 - calico
 ```
 ``` shell title="Export variables we will use to configure kube-vip" linenums="1"
-export VIP=192.168.3.83
+export VIP=192.168.1.20
 export TAG=v0.5.5
 export INTERFACE=ens192
 export CONTAINER_RUNTIME_ENDPOINT=unix:///run/k3s/containerd/containerd.sock
@@ -133,18 +133,18 @@ vi /etc/rancher/rke2/config.yaml
 ```
 ``` shell title="Paste the below values (change TOKEN)" linenums="1"
 token: <PASTE TOKEN HERE>
-server: https://k8s-cluster.dman.cloud:9345
+server: https://k8s-cluster.dev.dman.cloud:9345
 tls-san:
 - k8s-master03
-- k8s-master03.dman.cloud
-- k8s-cluster.dman.cloud
-- 192.168.3.83
+- k8s-master03.dev.dman.cloud
+- k8s-cluster.dev.dman.cloud
+- 192.168.1.20
 disable: rke2-ingress-nginx
 cni:
 - calico
 ```
 ``` shell title="Export variables we will use to configure kube-vip" linenums="1"
-export VIP=192.168.3.83
+export VIP=192.168.1.20
 export TAG=v0.5.5
 export INTERFACE=ens192
 export CONTAINER_RUNTIME_ENDPOINT=unix:///run/k3s/containerd/containerd.sock
