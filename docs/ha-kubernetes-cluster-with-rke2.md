@@ -1,16 +1,30 @@
-# HA Kubernetes with RKE2 & Kube-VIP 
+# HA Kubernetes with RKE2 & Kube-VIP
+kube-vip provides Kubernetes clusters with a virtual IP and load balancer for both the control plane (for building a highly-available cluster) and Kubernetes Services of type LoadBalancer without relying on any external hardware or software.
 ## Prerequsites
-- 3 Virtual Machines (nodes) with Static IP Addresses
-- Debian 11
-- DNS configured for each of the nodes and the floating IP Address (VIP)
-### ssh into the first master node
-## Update Package Repository and Upgrade Packages
+
+``` text
+1) Three (3) Virtual Machines with Static IPs
+```
+``` text
+2) DNS configured for each of the nodes
+```
+
+``` text
+3) Floating IP Address (VIP)
+```
+
+``` text
+4) DNS configured for Floating Hostname/IP
+```
+
+## Configure the first master node
+### Update Package Repository and Upgrade Packages
 ``` shell title="Run from shell prompt" linenums="1"
 sudo apt-get update && sudo apt upgrade -y
 sudo apt-get -y install gnupg2 ca-certificates curl apt-transport-https iptables
 ```
 
-## Install kubectl
+### Install kubectl (optional if already installed)
 Additional Information - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ``` shell title="Run from shell prompt" linenums="1"
 sudo apt update
@@ -21,7 +35,7 @@ sudo apt update
 sudo apt install kubectl -y
 ```
 
-## Prepare configuration file for k8s-master01
+### Prepare configuration file for k8s-master01
 ``` shell title="Run from shell prompt" linenums="1"
 mkdir -p /etc/rancher/rke2
 ```
@@ -39,10 +53,10 @@ cni:
 - calico
 ```
 
-## Install RKE2 on k8s-master01 node
+### Install RKE2 on k8s-master01 node
 ``` shell title="Export variables we will use to configure kube-vip" linenums="1"
 export VIP=192.168.1.20
-export TAG=v0.5.5
+export TAG=v0.5.11
 export INTERFACE=ens192
 export CONTAINER_RUNTIME_ENDPOINT=unix:///run/k3s/containerd/containerd.sock
 export CONTAINERD_ADDRESS=/run/k3s/containerd/containerd.sock
@@ -108,7 +122,7 @@ cni:
 ```
 ``` shell title="Export variables we will use to configure kube-vip" linenums="1"
 export VIP=192.168.1.20
-export TAG=v0.5.5
+export TAG=v0.5.11
 export INTERFACE=ens192
 export CONTAINER_RUNTIME_ENDPOINT=unix:///run/k3s/containerd/containerd.sock
 export CONTAINERD_ADDRESS=/run/k3s/containerd/containerd.sock
@@ -145,7 +159,7 @@ cni:
 ```
 ``` shell title="Export variables we will use to configure kube-vip" linenums="1"
 export VIP=192.168.1.20
-export TAG=v0.5.5
+export TAG=v0.5.11
 export INTERFACE=ens192
 export CONTAINER_RUNTIME_ENDPOINT=unix:///run/k3s/containerd/containerd.sock
 export CONTAINERD_ADDRESS=/run/k3s/containerd/containerd.sock
