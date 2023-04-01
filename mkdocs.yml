@@ -144,6 +144,7 @@ nav:
         - ArgoCD Git Webhook: argocd-webhook.md
     - Kubernetes:
         - RKE2 Kubernetes HA with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
+        - k3s HA Kubernetes with k3sup: k3sup-ha.md
         - Kubernetes Secrets: howto-use-kubernetes-secrets.md
     - Rancher:
         - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
