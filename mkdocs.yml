@@ -43,12 +43,14 @@ theme:
   
   features:
     - content.tooltips
-    - navigation.sections
+    #- navigation.sections
     - navigation.tabs
     - navigation.top
     - navigation.footer
     - navigation.indexes
-    - navigation.tracking  
+    - navigation.tracking
+    #- navigation.expand
+    - navigation.path  
     - toc.follow
     - search.suggest
     - search.highlight
@@ -132,16 +134,19 @@ copyright: |
 nav:
   - Home: index.md
   - Tutorials:
-    - Install Jenkins: install-jenkins.md
-    - Install Nginx Reverse Proxy for Jenkins: install-nginx.md
-    - Configure Jenkins with SSL: jenkins-ssl.md 
-    - Adding an SSH Based Agent with Docker to Jenkins: jenkins-ssh-agent.md
-    - Install ArgoCD: install-argocd.md
-    - ArgoCD Git Webhook: argocd-webhook.md
-    - Install HA Kubernetes with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
-    - Kubernetes Secrets: howto-use-kubernetes-secrets.md
-    - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
+    - Jenkins:
+        - Install Jenkins: install-jenkins.md
+        - Install Nginx Reverse Proxy for Jenkins: install-nginx.md
+        - Configure Jenkins with SSL: jenkins-ssl.md 
+        - Adding an SSH Based Agent with Docker to Jenkins: jenkins-ssh-agent.md
+    - ArgoCD:    
+        - Install ArgoCD: install-argocd.md
+        - ArgoCD Git Webhook: argocd-webhook.md
+    - Kubernetes:
+        - RKE2 Kubernetes HA with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
+        - Kubernetes Secrets: howto-use-kubernetes-secrets.md
+    - Rancher:
+        - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
     - Install Sonarqube: install-sonarqube.md
     - Install Gitlab CE k8s: install-gitlab-ce-k8s.md
-    - Kubernetes Secrets: kubernetes-secrets.md
     - Install Nexus3 Repository Manager with TLS: nexus3-with-tls.md
