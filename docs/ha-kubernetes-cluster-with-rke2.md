@@ -32,10 +32,10 @@ sudo apt install kubectl -y
 
 ### Prepare configuration file for k8s-master01
 ``` shell title="Run from shell prompt"
-mkdir -p /etc/rancher/rke2
+sudo mkdir -p /etc/rancher/rke2
 ```
 ``` shell title="Run from shell prompt"
-vi /etc/rancher/rke2/config.yaml
+sudo vi /etc/rancher/rke2/config.yaml
 ```
 ``` shell title="Paste the below contents" linenums="1"
 tls-san:
@@ -64,13 +64,13 @@ alias k=kubectl
 ```
 
 ``` shell title="Install RKE2 on master node 1" 
-curl -sfL https://get.rke2.io | sh -
+curl -sfL https://get.rke2.io | sudo sh -
 ```
 ```sh
-systemctl enable rke2-server
+sudo systemctl enable rke2-server
 ```
 ``` shell
-systemctl start rke2-server
+sudo systemctl start rke2-server
 ```
 
 ### Copy Token and Save
