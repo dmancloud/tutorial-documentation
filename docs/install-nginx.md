@@ -2,9 +2,8 @@
 Nginx is one of the most popular web servers in the world and is responsible for hosting some of the largest and highest-traffic sites on the internet. It is a lightweight choice that can be used as either a web server or reverse proxy.
 
 In this tutorial, you will configure Nginx as a reverse proxy to direct client requests to Jenkins.
-## Prerequsites 
-- Virtual Machine running Ubuntu 22.04 or newer
-- Jenkins installed
+!!! info "Prerequsites" 
+    Jenkins server already installed and running
 ### Update Package Repository and Upgrade Packages
 
 ``` shell title="Run from shell prompt" linenums="1"
@@ -13,16 +12,16 @@ sudo apt upgrade
 ```
 
 ## Installing Nginx
-``` shell title="Run from shell prompt" linenums="1"
+``` shell title="Run from shell prompt"
 sudo apt install nginx
 ```
 ### Checking your Web Server
 We can check with the `systemd` init system to make sure the service is running by typing:
-``` shell title="Run from shell prompt" linenums="1"
+``` shell title="Run from shell prompt"
 systemctl status nginx
 ```
 We can check with the systemd init system to make sure the service is running by typing:
-``` console title="Output should look similar to the below" linenums="1"
+``` shell title="Output should look similar to the below" linenums="1"
 Output
 ● nginx.service - A high performance web server and a reverse proxy server
    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)

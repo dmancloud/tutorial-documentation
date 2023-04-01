@@ -3,7 +3,7 @@ kube-vip provides Kubernetes clusters with a virtual IP and load balancer for bo
 
 ## Prerequsites
 
-!!! tip "System Requirements"
+!!! info "System Requirements"
     Three (3) linux virtual machines with statically configured IPs. It is recommended that the virtual machines have an **A Record** pointing to the IP address of the host.  
       
     A floating IP Address for the Virtual IP to access the cluster. It is recommended that to have an **A Record** pointing to the floating IP Address.
