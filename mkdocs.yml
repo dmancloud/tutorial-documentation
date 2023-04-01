@@ -75,7 +75,7 @@ extra:
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/u/dmancloud      
     - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/@dineshmistry
+      link: https://www.youtube.com/@dineshmistry?sub_confirmation=1
   generator: false
   consent:
     title: Cookie consent
