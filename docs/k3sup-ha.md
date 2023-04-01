@@ -22,6 +22,16 @@ sudo install k3sup /usr/local/bin/
 
 k3sup --help
 ```
+k3sup uses ssh to connect to the server and agent nodes so we need to copy our public key.
+
+``` shell title="copy ssh key to all nodes"
+ssh-copy-id dmistry@192.168.1.21  
+ssh-copy-id dmistry@192.168.1.22  
+ssh-copy-id dmistry@192.168.1.23  
+ssh-copy-id dmistry@192.168.1.24  
+ssh-copy-id dmistry@192.168.1.25  
+```
+
 Next we deploy a k3s sever node to the first node
 
 ``` shell linenums="1"
