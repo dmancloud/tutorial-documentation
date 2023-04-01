@@ -28,13 +28,15 @@ theme:
         enable_creation_date: true      
 
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme: dark)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: light)"
+      scheme: slate
       primary: indigo
       accent: indigo
       toggle:
