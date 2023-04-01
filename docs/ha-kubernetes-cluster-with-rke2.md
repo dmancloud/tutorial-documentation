@@ -1,15 +1,12 @@
 # HA Kubernetes with RKE2 & Kube-VIP
 kube-vip provides Kubernetes clusters with a virtual IP and load balancer for both the control plane (for building a highly-available cluster) and Kubernetes Services of type LoadBalancer without relying on any external hardware or software.
-## Prerequsites
 
+## Prerequsites
 
 !!! tip "System Requirements"
     Three (3) linux virtual machines with statically configured IPs. It is recommended that the virtual machines have an **A Record** pointing to the IP address of the host.  
       
     A floating IP Address for the Virtual IP to access the cluster. It is recommended that to have an **A Record** pointing to the floating IP Address.
-
-
-
 
 
 ## Configure the first master node
@@ -90,7 +87,7 @@ crictl pull docker.io/plndr/kube-vip:$TAG
 ``` shell title="Create an alias for kube-vip to save time"
 alias kube-vip="ctr --namespace k8s.io run --rm --net-host docker.io/plndr/kube-vip:$TAG vip /kube-vip"
 ```
-``` shell title="Creat a daemonset manifest to run kube-vip"
+``` shell title="Create a daemonset manifest to run kube-vip"
 kube-vip manifest daemonset \
 --arp \
 --interface $INTERFACE \
