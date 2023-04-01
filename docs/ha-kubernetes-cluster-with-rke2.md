@@ -10,32 +10,36 @@ kube-vip provides Kubernetes clusters with a virtual IP and load balancer for bo
 
 
 ## Configure the first master node
+``` shell title="Become root"
+sudo -i
+```
 ### Update Package Repository and Upgrade Packages
 ``` shell title="Run from shell prompt"
-sudo apt-get update && sudo apt upgrade -y
+apt-get update && sudo apt upgrade -y
 ```
 ```sh title="Run from shell prompt"
-sudo apt-get -y install gnupg2 ca-certificates \
+apt-get -y install gnupg2 ca-certificates \
 curl apt-transport-https iptables
 ```
 
 ### Install kubectl (optional if already installed)
 Additional Information - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ``` shell title="Run from shell prompt" linenums="1"
-sudo apt update
-sudo apt install ca-certificates curl apt-transport-https -y
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+apt update
+apt install ca-certificates curl apt-transport-https -y
+curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt update
-sudo apt install kubectl -y
+apt update
+apt install kubectl -y
 ```
 
 ### Prepare configuration file for k8s-master01
+
 ``` shell title="Run from shell prompt"
-sudo mkdir -p /etc/rancher/rke2
+mkdir -p /etc/rancher/rke2
 ```
 ``` shell title="Run from shell prompt"
-sudo vi /etc/rancher/rke2/config.yaml
+vi /etc/rancher/rke2/config.yaml
 ```
 ``` shell title="Paste the below contents" linenums="1"
 tls-san:
@@ -64,13 +68,13 @@ alias k=kubectl
 ```
 
 ``` shell title="Install RKE2 on master node 1" 
-curl -sfL https://get.rke2.io | sudo sh -
+curl -sfL https://get.rke2.io | sh -
 ```
 ```sh
-sudo systemctl enable rke2-server
+systemctl enable rke2-server
 ```
 ``` shell
-sudo systemctl start rke2-server
+systemctl start rke2-server
 ```
 
 ### Copy Token and Save
@@ -113,6 +117,9 @@ ping 192.168.1.20
 
 ## Prepare configuration file for k8s-master02 node
 ### Login into the second master node
+``` shell title="Become root"
+sudo -i
+```
 ``` shell title="Run from shell prompt"
 mkdir -p /etc/rancher/rke2
 ```
@@ -144,6 +151,10 @@ systemctl start rke2-server
 
 ## Prepare configuration file for k8s-master03 node
 ### Login into the third master node
+``` shell title="Become root"
+sudo -i
+```
+
 ``` shell title="Run from shell prompt" 
 mkdir -p /etc/rancher/rke2
 ```
