@@ -137,7 +137,7 @@ nav:
     - Jenkins:
         - Install Jenkins: install-jenkins.md
         - Install Nginx Reverse Proxy for Jenkins: install-nginx.md
-        - Configure Jenkins with SSL: jenkins-ssl.md 
+        - Configure Jenkins with TLS: jenkins-ssl.md 
         - Adding an SSH Based Agent with Docker to Jenkins: jenkins-ssh-agent.md
     - ArgoCD:    
         - Install ArgoCD: install-argocd.md
@@ -151,3 +151,5 @@ nav:
     - Install Sonarqube: install-sonarqube.md
     - Install Gitlab CE k8s: install-gitlab-ce-k8s.md
     - Install Nexus3 Repository Manager with TLS: nexus3-with-tls.md
+    - TrueNAS (Core):
+        - TrueNAS Core Configure TLS: truenas-core-tls.md
