@@ -49,7 +49,7 @@ k3sup install --ip 192.168.1.21 \
 --tls-san 192.168.1.20 \
  --cluster --local-path ~/.kube/k8s-cluster.dev.dman.cloud.yaml \
  --context k8s-cluster-ha \
- --k3s-extra-args "--disable traefik --node-ip=192.168.1.21"
+ --k3s-extra-args "--disable traefik --disable servicelb --node-ip=192.168.1.21"
 ```
 ``` shell
 export KUBECONFIG=~/.kube/k8s-cluster.dev.dman.cloud.yaml
@@ -84,17 +84,17 @@ kube-vip manifest daemonset \
 Logout of first server node and join serves node 2 and server node 3
 
 ``` shell title="Server Node 2"
-k3sup join --ip 192.168.1.22 --user dmistry --sudo --k3s-channel stable --server --server-ip 192.168.1.20 --server-user dmistry --sudo --k3s-extra-args "--disable traefik  --node-ip=192.168.1.22"
+k3sup join --ip 192.168.1.22 --user dmistry --sudo --k3s-channel stable --server --server-ip 192.168.1.20 --server-user dmistry --sudo --k3s-extra-args "--disable traefik  --disable servicelb --node-ip=192.168.1.22"
 ```
 ``` shell title="Server Node 3"
-k3sup join --ip 192.168.1.23 --user dmistry --sudo --k3s-channel stable --server --server-ip 192.168.1.20 --server-user dmistry --sudo --k3s-extra-args "--disable traefik  --node-ip=192.168.1.23"
+k3sup join --ip 192.168.1.23 --user dmistry --sudo --k3s-channel stable --server --server-ip 192.168.1.20 --server-user dmistry --sudo --k3s-extra-args "--disable traefik  --disable servicelb --node-ip=192.168.1.23"
 ```
 Next we configure the agent nodes
 ``` shell title="Agent Node 2"
-k3sup join --user dmistry --sudo --server-ip 192.168.1.20 --ip 192.168.1.24 --k3s-channel stable -- --k3s-extra-args "--disable traefik" --print-command
+k3sup join --user dmistry --sudo --server-ip 192.168.1.20 --ip 192.168.1.24 --k3s-channel stable -- --k3s-extra-args "--disable traefik --disable servicelb" --print-command
 ```
 ``` shell title="Agent Node 2"
-k3sup join --user dmistry --sudo --server-ip 192.168.1.20 --ip 192.168.1.25 --k3s-channel stable -- --k3s-extra-args "--disable traefik" --print-command
+k3sup join --user dmistry --sudo --server-ip 192.168.1.20 --ip 192.168.1.25 --k3s-channel stable -- --k3s-extra-args "--disable traefik --disable servicelb" --print-command
 ```
 
 You can now download the kubeconfig from server node 1 and update the IP adderss to match the load balancer IP (192.168.1.20)
