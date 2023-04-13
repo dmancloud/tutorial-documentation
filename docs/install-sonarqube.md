@@ -143,4 +143,44 @@ Access the Sonarqube UI
 http://<IP>:9000
 ```
 
+# Optional Reverse Proxy and TLS Configuration
+
+## Installing Nginx
+``` shell title="Run from shell prompt"
+sudo apt install nginx
+```
+
+``` shell title="create nginx config file" linenums="1"
+vi /etc/nginx/sites-available/sonarqube.conf
+```
+Paste the contents below and be sure to update the domain name
+
+``` shell title="Paste and update" linenums="1"
+server {
+
+    listen 80;
+    server_name sonarqube.dev.dman.cloud;
+    access_log /var/log/nginx/sonar.access.log;
+    error_log /var/log/nginx/sonar.error.log;
+    proxy_buffers 16 64k;
+    proxy_buffer_size 128k;
+
+    location / {
+        proxy_pass http://127.0.0.1:9000;
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto http;
+    }
+}
+```
+Next, activate the server block configuration 'sonarqube.conf' by creating a symlink of that file to the '/etc/nginx/sites-enabled' directory. Then, verify your Nginx configuration files.
+
+``` shell title="Enable virtual host and restart nginx" linenums="1"
+sudo ln -s /etc/nginx/sites-available/sonarqube.conf /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
 That's it! You have now successfully installed Sonarque, if you found this tutotial helpful please consider subscribing to my YouTube Channel for more tutorials like this. https://www.youtube.com/@dineshmistry
