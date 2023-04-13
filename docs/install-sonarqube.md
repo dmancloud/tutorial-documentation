@@ -183,4 +183,22 @@ sudo ln -s /etc/nginx/sites-available/sonarqube.conf /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
+
+## Installing Certbot
+The first step to using Let’s Encrypt to obtain an SSL certificate is to install the Certbot software on your server.
+``` shell title="Run from shell prompt" linenums="1"
+sudo apt install certbot python3-certbot-nginx
+```
+
+### Obtaining an SSL Certificate
+Certbot provides a variety of ways to obtain SSL certificates through plugins. The Nginx plugin will take care of reconfiguring Nginx and reloading the config whenever necessary. To use this plugin, type the following:
+``` shell title="Run from shell prompt (replace domain)" linenums="1"
+sudo certbot --nginx -d sonarqube.dev.dman.cloud
+```
+If that’s successful, certbot will ask how you’d like to configure your HTTPS settings.
+
+Select your choice then hit ENTER. The configuration will be updated, and Nginx will reload to pick up the new settings. certbot will wrap up with a message telling you the process was successful and where your certificates are stored
+
+Nginx should now be serving your domain name. You can test this by navigating to https://your_domain
+
 That's it! You have now successfully installed Sonarque, if you found this tutotial helpful please consider subscribing to my YouTube Channel for more tutorials like this. https://www.youtube.com/@dineshmistry
