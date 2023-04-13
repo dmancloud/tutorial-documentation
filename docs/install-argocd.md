@@ -104,6 +104,9 @@ spec:
     - argocd.dev.dman.cloud
     secretName: argocd-secret # do not change, this is provided by Argo CD
 ```
+``` shell title="Apply manifest" linenums="1"
+kubectl apply -f ingress.yaml
+```
 
 # Deploy Demo Application
 You can use the below repository to deploy a demo nginx application
