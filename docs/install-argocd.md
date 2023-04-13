@@ -52,7 +52,7 @@ Create Cluster Issuser for Lets Encrypt `vi letsencrypt-product.yaml` and paste 
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-product
+  name: letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
