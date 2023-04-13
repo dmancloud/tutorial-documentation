@@ -71,7 +71,7 @@ Deploy nginx-ingress controller
 ``` shell title="Apply manifest" linenums="1"
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.7.0/deploy/static/provider/cloud/deploy.yaml
 ```
-Create ingress for ArgoCD
+Create ingress for ArgoCD `vi ingress.yaml` and paste the below contents adjust the domain name
 ``` shell title="Apply manifest" linenums="1"
 apiVersion: networking.k8s.io/v1
 kind: Ingress
