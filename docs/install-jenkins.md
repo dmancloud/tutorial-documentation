@@ -13,10 +13,25 @@ sudo apt update
 sudo apt upgrade
 ```
 
-## Adoptium Java 11
+## Adoptium Java 17
 
 ### Add Adoptium repository
 ``` shell title="Add adoptium repository" linenums="1"
+wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | tee /etc/apt/keyrings/adoptium.asc
+echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
+```
+### Install Java 17
+``` shell title="Update repository and install Java" linenums="1"
+apt update
+apt install temurin-17-jdk
+/usr/bin/java --version
+exit 
+```
+
+
+## Install Jenkins
+First, add the repository key to the system:
+``` shell title="Run from shell prompt"
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
@@ -24,30 +39,6 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins
-```
-### Install Java 11
-``` shell title="Update repository and install Java" linenums="1"
-apt update
-apt install temurin-11-jdk
-/usr/bin/java --version
-```
-
-## Install Jenkins
-First, add the repository key to the system:
-``` shell title="Run from shell prompt"
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-```
-Next, let’s append the Debian package repository address to the server’s `sources.list`:
-``` shell title="Run from shell prompt"
-sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-```
-Next, we’ll run `update` so that `apt` will use the new repository.
-``` shell title="Run from shell prompt"
-sudo apt update
-```
-Finally, we’ll install Jenkins and its dependencies.
-``` shell title="Run from shell prompt"
-sudo apt install jenkins
 ```
 
 ### Starting Jenkins
