@@ -107,7 +107,21 @@ spec:
 ``` shell title="Apply manifest" linenums="1"
 kubectl apply -f ingress.yaml
 ```
+# Install ArgoCD command line tool
+Download With Curl
+``` shell title="Run from shell" linenums="1"
+curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+rm argocd-linux-amd64
+```
 
+## Login to ArgoCD from the CLI and change the password
+``` shell title="Remember to swap your domain name below" linenums="1"
+argocd login argocd.dev.dman.cloud
+```
+``` shell title="Update password" linenums="1"
+argocd account update-password
+```
 # Deploy Demo Application
 You can use the below repository to deploy a demo nginx application
 ``` shell title="This repository has a sample application" linenums="1"
