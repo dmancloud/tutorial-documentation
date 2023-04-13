@@ -34,6 +34,77 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 ``` shell title="Run from shell prompt" linenums="1"
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
+# Optional (Enable TLS w/Ingress)
+If you want to enable access from the internet or private network you can follow the instructions below to install and configure an ingress-controller with lets-encrypt.
+``` shell title="Install Cert-Manager" linenums="1"
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.11.0 \
+  --set installCRDs=true
+```
+Create Cluster Issuser for Lets Encrypt `vi letsencrypt-product.yaml` and paste the below contents adjust your email address
+``` shell title="Create a cluster issuer manifest" linenums="1"
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-product
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: dinesh@dman.cloud
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+```
+``` shell title="Apply manifest" linenums="1"
+kubectl apply -f letsencrypt-product.yaml
+```
+Deploy nginx-ingress controller
+``` shell title="Apply manifest" linenums="1"
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.7.0/deploy/static/provider/cloud/deploy.yaml
+```
+Create ingress for ArgoCD
+``` shell title="Apply manifest" linenums="1"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-ingress
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # If you encounter a redirect loop or are getting a 307 response code
+    # then you need to force the nginx ingress to connect to the backend using HTTPS.
+    #
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: argocd.dev.dman.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              name: https
+  tls:
+  - hosts:
+    - argocd.dev.dman.cloud
+    secretName: argocd-secret # do not change, this is provided by Argo CD
+```
+
 # Deploy Demo Application
 You can use the below repository to deploy a demo nginx application
 ``` shell title="This repository has a sample application" linenums="1"
