@@ -35,7 +35,6 @@ Edit the values files and adjust the following settings
 ``` shell title="Run from shell prompt"
 adminPassword: "password"
 serviceType: NodePort
-installLatestSpecifiedPlugins: true
 
 serviceAccountAgent:
   # Specifies whether a ServiceAccount should be created
