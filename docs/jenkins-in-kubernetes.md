@@ -46,3 +46,8 @@ serviceAccountAgent:
 ``` shell title="Run from shell prompt"
 helm upgrade --install jenkins jenkinsci/jenkins -n jenkins --create-namespace -f values.yaml
 ```
+
+## Create a secret for Dockerhub
+``` shell title="Run from shell prompt"
+kubectl create secret docker-registry docker-credentials --docker-username=[userid] --docker-password=[Docker Hub access token] --docker-email=[user email address] --namespace jenkins
+```
