@@ -26,26 +26,25 @@ helm repo add jenkinsci https://charts.jenkins.io
 helm repo update
 ```
 
-Download the values file and make changes
+### Create Namespace
 ``` shell title="Run from shell prompt"
-helm show values jenkinsci/jenkins > values.yaml
+kubectl create ns jenkins
 ```
 
-Edit the values files and adjust the following settings
+### Download YAML files
 ``` shell title="Run from shell prompt"
-adminPassword: "password"
-serviceType: NodePort
-
-serviceAccountAgent:
-  # Specifies whether a ServiceAccount should be created
-  create: true
+wget https://raw.githubusercontent.com/dmancloud/jenkins-kubernetes-kaniko/main/jenkins-sa.yaml
+wget https://raw.githubusercontent.com/dmancloud/jenkins-kubernetes-kaniko/main/jenkins-volume.yaml
+wget https://raw.githubusercontent.com/dmancloud/jenkins-kubernetes-kaniko/main/values.yaml
 ```
+
+### Create a secret for Dockerhub
+``` shell title="Run from shell prompt"
+kubectl create secret docker-registry docker-credentials --docker-username=[userid] --docker-password=[Docker Hub access token] --docker-email=[user email address] --namespace jenkins
+```
+### Finally install Jenkins CI
 
 ``` shell title="Run from shell prompt"
 helm upgrade --install jenkins jenkinsci/jenkins -n jenkins --create-namespace -f values.yaml
 ```
 
-## Create a secret for Dockerhub
-``` shell title="Run from shell prompt"
-kubectl create secret docker-registry docker-credentials --docker-username=[userid] --docker-password=[Docker Hub access token] --docker-email=[user email address] --namespace jenkins
-```
