@@ -36,7 +36,6 @@ Edit the values files and adjust the following settings
 adminPassword: "password"
 serviceType: NodePort
 installLatestSpecifiedPlugins: true
-initializeOnce: true
 
 serviceAccountAgent:
   # Specifies whether a ServiceAccount should be created
