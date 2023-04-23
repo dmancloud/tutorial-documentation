@@ -139,7 +139,7 @@ nav:
         - Install Nginx Reverse Proxy for Jenkins: install-nginx.md
         - Configure Jenkins with TLS: jenkins-ssl.md 
         - Adding an SSH Based Agent with Docker to Jenkins: jenkins-ssh-agent.md
-        - Instakk Jenkins on Kubernetes: jenkins-in-kubernetes.md
+        - Install Jenkins on Kubernetes: jenkins-in-kubernetes.md
     - ArgoCD:    
         - Install ArgoCD: install-argocd.md
         - ArgoCD Git Webhook: argocd-webhook.md
