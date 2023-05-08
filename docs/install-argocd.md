@@ -4,12 +4,12 @@ Argo CD is a declarative continuous delivery tool for Kubernetes applications. I
 ## Prerequsites 
 - Virtual Machine running Ubuntu 22.04 or newer
 ### Update Package Repository and Upgrade Packages
-``` shell title="Run from shell prompt" linenums="1"
+``` console title="Run from shell prompt" linenums="1"
 sudo apt update
 sudo apt upgrade
 ```
 ## Create Kubernetes Cluster
-``` shell title="Run from shell prompt" linenums="1"
+``` bash title="Run from shell prompt" linenums="1"
 sudo bash
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --disable traefik
 exit 
