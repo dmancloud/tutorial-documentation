@@ -147,6 +147,7 @@ nav:
         - RKE2 Kubernetes HA with Kube-VIP: ha-kubernetes-cluster-with-rke2.md
         - k3s HA Kubernetes with k3sup: k3sup-ha.md
         - Kubernetes Secrets: howto-use-kubernetes-secrets.md
+        - TLS Certifcates on Kubernetes & Cloudflare: kubernetes-certifcates-traefik.md
     - Rancher:
         - Install Rancher Manager With Lets Encrypt: rancher-manager-with-lets-encrypt.md
     - Install Sonarqube: install-sonarqube.md
@@ -154,4 +155,3 @@ nav:
     - Install Nexus3 Repository Manager with TLS: nexus3-with-tls.md
     - TrueNAS (Core):
         - TrueNAS Core Configure TLS: truenas-core-tls.md
-    - TLS Certifcates on Kubernetes & Cloudflare: kubernetes-certifcates-traefik.md
